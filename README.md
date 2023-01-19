@@ -1,2 +1,2 @@
-# data_structures_and_algorithms
-LABS: DSA456(Seneca College)
+# Labs
+LABS: Data Structures and Algorithms (DSA456 @ Seneca College)
