@@ -1,29 +1,12 @@
 ```diff
 -Changes to this file will be made on or before january 28th 2023 
 ```
-# Lab 2 
+# Lab 2
 ```diff
 + Author: Tushardeep Singh
 + Student Number: 160427217
 ```
 
-## Due: Jan 28
-
-## Objectives:
-
--   Learn how to perform analysis
-
-## Setup
-
-
-All files needed for this lab were created by doing the first task in [lab 0](lab-00.md).  If you didn't do lab 0, do the first task to create your lab repository.
-
-Unless otherwise stated, all writing goes into the file lab2.md
-
-## Part A Analysis
-
-
--   Perform an analysis of the following functions:
 
 ### function 1:
 
@@ -31,7 +14,7 @@ Analyze the following function with respect to number
 ```diff
 + Let 'number' be the input/parameter to function1(), wherein a series of calculations 
 + will be done using 'number' and a return value will be generated.
-+ For analysis, let n = number. Then, loop will iterate 'n' number of times.
++ For analysis, let n = number. Then, loop will iterate 'n' number of times (0 to n-1 both inclusive)
 + Let T(n) represent the total number of operations required to generate a return value,
 + where 'n' is the range of 'for' loop used below.
 ```
@@ -92,6 +75,8 @@ def function1(number):
 + Therefore, T(n) is still O(n)
 ```
 
+
+
 ### function 2:
 
 Analyze the following function with respect to number
@@ -105,6 +90,8 @@ Analyze the following function with respect to number
 + Above, statement is result of sum of square of integers where each integer >= 1. 
 + It will also get proved below when O(n) gets proved.
 ```
+<!-- sum of square of integers is equal to n(n+1)(2n+1)/6 where n>= 1 -->
+
 ```python
 def function2(number):
 	return  ((number)*(number+1)*(2*number + 1))/6 # (1) + (1) + (1) + (1+1) + (1) + (1)
@@ -129,9 +116,14 @@ def function2(number):
 + i.e 0 <= T(n) <= cn is true for all n >= n`
 + Therefore, T(n) is O(n)
 ```
+
+
 ### function 3:
 
-Analyze the following with respect to the length of the list.  Note that the function call len() which returns the length of the list is constant (O(1)) with respect to the length of the list.
+<!-- this function orders the list in ascending order. -->
+<!-- capital letters occur before lowercase letters -->
+
+Analyze the following with respect to the length of the list. Note that the function call len() which returns the length of the list is constant (O(1)) with respect to the length of the list.
 ```diff
 + Let 'list' be input/parameter to function3, wherein function orders the list in ascending order.
 + (capital letters occur before lowercase letters)
@@ -146,7 +138,6 @@ Analyze the following with respect to the length of the list.  Note that the fun
 ! proof:
 ```
 ![proof](https://user-images.githubusercontent.com/113130891/213395372-309ebfec-2bdc-4d7f-8914-346ce0fbb2ce.jpeg)
-
 
 ```python
 
@@ -165,63 +156,56 @@ def function3(list):
 ```
 ![complete calculation](https://user-images.githubusercontent.com/113130891/213402453-53bd25e1-9db1-456f-aa31-3714fb955a3a.jpeg)
 
-
 ### function 4:
+
+<!-- this function calculates factoral. -->
 
 Analyze the following function with respect to number
 
 ```python
 def function4(number):
 	total=1
-	for i in range(1, number):
-		total*=(i+1)
+	for i in range(1 to number):
+		total=total*(i+1)
 	return total
 ```
 
-## Part B Pre-Lab Preparation:
+## In class portion
 
-While not 100% required, doing this will make it easier to complete the lab during the lab class
+### Group members
 
--   Push your lab1.py from lab 1 into your lab 2 repository.
+List the members of your group member below:
 
-## Part C In-Lab Discussion:
+    * Name
+    * ex. Samuel Vimes
+    * ...
 
--   During your lab period, form groups of 5 to 6 students.
-    -   Your professors may have further instructions on how to form groups.
--   If you have not completed the pre-lab, do so now. copy your lab1.py from lab1 into your lab2 repo and push it into github.  Do not change name of file, keep it as lab1.py
--   Doing so will trigger a series of tests which will be timed.
--   In each group, look at your runs your lab1 functions (using lab2's set of testers)
-    -   In the action tab, expand your successful run of the tester for the lab. you will find the timing results of your functions there.
-    -   in lab2.md discussion, fill in the names of your group members.
-    -   Fill in the Timing table in lab2.md with the times for your group, add or remove rows as necessary based on the number of members in your group
+### Timing Data
 
-    -   Fill in the second table with the following information:
+Note, if a groupmate did not complete lab1, simply put 0.0 in for the times, it is ok if there is something missing.
 
-        -   slowest time for each of the listed function
-        -   fastest time for each of the listed function
-        -   difference in timing between slowest and fastest times
+| Team member    | Timing for fibonacci | Timing for sum_to_number |
+| -------------- | -------------------- | ------------------------ |
+| Samuel Vimes   | 0.123                | 0.456                    |
+| group member 2 | 0.0                  | 0.0                      |
+| group member 3 | 0.0                  | 0.0                      |
+| group member 4 | 0.0                  | 0.0                      |
+| group member 5 | 0.0                  | 0.0                      |
+| group member 6 | 0.0                  | 0.0                      |
 
-    -   Compare the slowest and the fastest version of each function, what were the differences? Was it a difference in syntax? A difference in approach?... for example, did one solution use recursion while the other did not?
+### Summary
+
+| function      | fastest | slowest | difference |
+| ------------- | ------- | ------- | ---------- |
+| sum_to_number |         |         |            |
+| fibonacci     |         |         |            |
+
+### Discussion:
+
+Look at the code from lab 1 and discuss the differences between fastest/slowest versions. Was it a difference in syntax? A difference in approach? Write down your observations.
 
 ## Reflection
 
 1. Considering the solutions you saw when looking at the lab 1 code, what differences did you see between fastest and slowest versions of code?
-2. Was there a difference in terms of usage of space resource?  Did one algorithm use more/less space (memory)?  
+2. Was there a difference in terms of usage of space resource? Did one algorithm use more/less space (memory)?
 3. What sort of conclusions can you draw based on your observations?
-
-## Submitting your lab
-
-In order to get a mark for this lab, you must submit:
-
--   a complete analysis of every function in part A.
-
-Please make sure you follow the steps listed below fully
-
-- Place all your work for this lab into the file lab2.md unless otherwise indicated
-
-
-## Lab Rubric:
-
-| Criteria       | Poor - 0 mark     | Fair - 0.5 marks                                                                                                                     | Good - 1 marks                                                              |
-| -------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| Lab Completion | No analysis present/completed | An analysis was present but was missing key steps or a properly completed analysis but no group work participation and/or reflection | Successfully complete both the group portion of the lab and the reflection. |
