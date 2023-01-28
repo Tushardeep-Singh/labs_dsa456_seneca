@@ -1,33 +1,29 @@
-```diff
--Changes to this file will be made on or before january 28th 2023 
-```
 # Lab 2
 ```diff
 + Author: Tushardeep Singh
 + Student Number: 160427217
 ```
 
-
-### function 1:
-
-Analyze the following function with respect to number
 ```diff
 + Let 'number' be the input/parameter to function1(), wherein a series of calculations 
 + will be done using 'number' and a return value will be generated.
-+ For analysis, let n = number. Then, loop will iterate 'n' number of times (0 to n-1 both inclusive)
++ For analysis, let n = number. Then, loop will iterate 'n' number of times.
 + Let T(n) represent the total number of operations required to generate a return value,
 + where 'n' is the range of 'for' loop used below.
 ```
+### function 1:
+
+Analyze the following function with respect to number
 
 ```python
 def function1(number):
-	total=0; # 1
+	total=0;
 
-	for i in range(0,number): # n + 1
-		x = (i+1) # 2n
-		total+=(x*x) # 2n
+	for i in range(0,number):
+		x = (i+1)
+		total+=(x*x)
 
-	return total # 1
+	return total
 ```
 ```diff
 + explanation of count:
@@ -73,6 +69,25 @@ def function1(number):
 + Still, 0 <= 5n <= 6n, where n >= 0
 + It will be a correct practice to remove 5 because 0 <= n <= 6n ( 0 <= T(n) <= cf(n) ) where n >= 0
 + Therefore, T(n) is still O(n)
+
++ Hence, for n inputs, the maximum number of operations will be less than or equal to constant multiples of n.
++ It can also be written :
++ upper bound : O(n^2)
++ Lower bound : Ω(log n)
+
++ Short approach :
++ There are operators that run constant number of times, C1
++ There are operators that run 'n' number of times, C2*n
++ T(n) = C1 + (C2*n)
++ Removing all the constants and constant with leading order of growth.
++ T(n) = n
++ While doing asymptotic analysis we usually find the worst case, i.e. upper bound, so
++ 0 <= n <= 2n, where n >= 0
++ Hence, T(n) is O(n), for all n >= n`
+
++ We can also write,
++ upper bound : O(n^2)
++ lower bound : Ω(log n)
 ```
 
 
@@ -94,7 +109,7 @@ Analyze the following function with respect to number
 
 ```python
 def function2(number):
-	return  ((number)*(number+1)*(2*number + 1))/6 # (1) + (1) + (1) + (1+1) + (1) + (1)
+	return  ((number)*(number+1)*(2*number + 1))/6
 
 ```
 ```diff
@@ -113,8 +128,9 @@ def function2(number):
 
 + We can also see that, 
 + 0 <= 7 <= 7n ,where n >= 1
-+ i.e 0 <= T(n) <= cn is true for all n >= n`
-+ Therefore, T(n) is O(n)
++ i.e 0 <= T(n) <= cf(n) is true for all n >= n`
++ Therefore, T(n) is O(1) i.e. it has a constant order of growth.
++ Hence, the number of operations required will be constant as per the approach of the algorithm (in this case 7), irrespective of the input size.
 ```
 
 
@@ -142,32 +158,108 @@ Analyze the following with respect to the length of the list. Note that the func
 ```python
 
 def function3(list):
-	for i in range (0,len(list)-1): # (n-1) + 1 + 1
-		for j in range(0,len(list)-1-i): # z + (n-1) + 1 + 1 + (n-1)
-			if(list[j]>list[j+1]): # 2z
-				tmp=list[j] # z
-				list[j]=list[j+1] # 2z
-				list[j+1]=tmp # 2z
+	for i in range (0,len(list)-1):
+		for j in range(0,len(list)-1-i):
+			if(list[j]>list[j+1]):
+				tmp=list[j]
+				list[j]=list[j+1]
+				list[j+1]=tmp
 
 ```
 ```diff
 + T(n):
 + Total number of operations required to order the list in ascending order:
 ```
-![complete calculation](https://user-images.githubusercontent.com/113130891/213402453-53bd25e1-9db1-456f-aa31-3714fb955a3a.jpeg)
+![complete_calculation](https://user-images.githubusercontent.com/113130891/215256896-39bbf3c4-0438-479c-86b6-c85dacc6b55a.jpg)
 
+```diff
++ Short approach:
++ Worst case:
++ Total number of operations in inside loop : n(n-1)/2 = (n^2)/2 - n/2
++ Removing all the lower orders of growth, constant values and constant with higher order of growth
++ T(n) = n^2
++ 0 <= n^2 <= 2(n^2), where n >= 0
++ Hence, T(n) is O(n^2), for all n >= n` i.e. for an input of size 'n', the maximum number of operations will be less than
++ or equal to a constant multiple of n^2
+
++ We can also write:
++ upper bound : O(n^3)
++ lower bound : Ω(log log n)
+```
 ### function 4:
+
 
 <!-- this function calculates factoral. -->
 
 Analyze the following function with respect to number
+```diff
++ Let 'number' be the input/parameter to function4 wherein function calculates the factoral of 'number'.
++ For analysis let n = number
++ Let T(n) be the total number of operations required to calculate factoral.
 
++ Number of iterations in for loop is (n-1) , 1 to (n-1) both inclusive.
+
+```
 ```python
 def function4(number):
-	total=1
-	for i in range(1 to number):
-		total=total*(i+1)
-	return total
+	total=1 #1
+	for i in range(1 to number): # (n-1) + 1
+		total=total*(i+1) # 3(n-1)
+	return total # 1
+```
+
+```diff
++ explanation of count:
+
+! total=1 #1
++ Above, operator '=' will only be used once per function call and hence, has a count of 1.
+
+! for i in range(1 to number): # (n-1) + 1
++ Above, value of 'i' changes in every iteration of loop from 1 to (n-1), both inclusive. Thus, value of 'i'
++ changes (n-1) number of times, so count for 'i' is (n-1).
++ range() gets called once per loop execution, to get values the loop must iterate through.
++ so, count = n
+
+! total=total*(i+1) # 3(n-1)
++ Above, operators '=','*','+' are used in every iteration of the loop.
++ so, count = 3(n-1)
+
+! return total # 1
++ A value will be returned in every function call and a return will happen only once.
++ so, count = 1.
+
++ T(n):
++ Total number of operations required to generate a return value:
++ T(n) = 1 + n + 3n - 3 + 1
++ T(n) = 4n - 1
+
++ We can also see that, 
++ 0 <= 4n - 1 <= 5n, where n >= 1
++ i.e 0 <= T(n) <= cf(n) is true for all n >= n`
++ Therefore, T(n) is O(n)
+
++ Above, T(n) is of the form (y = mx + c), at very large values of x, c will be insignificant
++ in comparison to mx. So, it will be a correct practice to remove (-1) from T(n).
++ T(n) = 4n
++ Still, 0 <= 4n <= 5n, where n >= 0
++ It will be a correct practice to remove 4 because 0 <= 4n <= 5n ( 0 <= T(n) <= cf(n) ) where n >= 0
++ Therefore, T(n) is still O(n)
+
++ Short approach :
++ worst case:
++ There are operators that run constant number of times, C1
++ There are operators that run 'n-1' number of times, C2*(n-1)
++ T(n) = C1 + C2*(n-1)
++ Removing all the lower orders of growth, constant values and constant with higher order of growth
++ T(n) = n
++ 0 <= n <= 2n, where n >= 0
++ Hence, 0 <= T(n) <= cf(n), for all n >= n`
++ Therefore, T(n) is O(n)
++ Hence, for n inputs, the maximum number of operations will be less than or equal to constant multiples of n.
+
++ It can also be written :
++ upper bound : O(n^2)
++ Lower bound : Ω(log n)
 ```
 
 ## In class portion
@@ -184,28 +276,43 @@ List the members of your group member below:
 
 Note, if a groupmate did not complete lab1, simply put 0.0 in for the times, it is ok if there is something missing.
 
-| Team member    | Timing for fibonacci | Timing for sum_to_number |
-| -------------- | -------------------- | ------------------------ |
-| Samuel Vimes   | 0.123                | 0.456                    |
-| group member 2 | 0.0                  | 0.0                      |
-| group member 3 | 0.0                  | 0.0                      |
-| group member 4 | 0.0                  | 0.0                      |
-| group member 5 | 0.0                  | 0.0                      |
-| group member 6 | 0.0                  | 0.0                      |
-
+| Team member    				| Timing for fibonacci | Timing for sum_to_number |
+| -------------- 				| -------------------- | ------------------------ |
+| Samuel Vimes   				| 0.123                | 0.456                    |
+| Tushardeep Singh 				| 3.0 e-06             | 0.55                     |
+| 			       | 7.9 e-06 			   | 0.8                      |
+| 				 | 2.06 e-05			   | 0.98                     |
+|               				| 8.5 e-06             | 1.13                     |
+| 			 			| 4.74                 | 0.6                      |
+| 							| 4.99 e-06			   | 1.29					  |		
+					     
 ### Summary
 
-| function      | fastest | slowest | difference |
-| ------------- | ------- | ------- | ---------- |
-| sum_to_number |         |         |            |
-| fibonacci     |         |         |            |
+| function      | fastest 		  | slowest 		| difference 								   |
+| ------------- | ------- 		  | ------- 		| ---------- 								   |
+| sum_to_number |0.55(tushar)     | 1.29   | 0.74       								   |	
+| fibonacci     |3.0 e-06(tushar) | 4.74  | 4.74(3.0 e-06 insignificant compared to 4.74)|
 
 ### Discussion:
 
-Look at the code from lab 1 and discuss the differences between fastest/slowest versions. Was it a difference in syntax? A difference in approach? Write down your observations.
+Look at the code from lab 1 and discuss the differences between fastest/slowest versions. Was it a difference in syntax? A difference in approach? Write down your 
+observations.
+
+
 
 ## Reflection
 
-1. Considering the solutions you saw when looking at the lab 1 code, what differences did you see between fastest and slowest versions of code?
-2. Was there a difference in terms of usage of space resource? Did one algorithm use more/less space (memory)?
-3. What sort of conclusions can you draw based on your observations?
+1. Considering the solutions you saw when looking at the lab 1 code, what differences did you see between fastest and slowest versions of code?<br />
+-> The fastest version of the code was optimized for performance. It contained only one while loop and there was no recursion used. Usually, in deep recursion, program tends to slow down and can crash if sufficient memory isn't available. 
+In slow function sum_to_goal, more 'if' statements were used as compared to faster code.
+In slow function fibonacci, in every function call, the function called itself twice, which at large values of 'i' would result in a large number of function calls, hence the function runs very slowly.
+
+2. Was there a difference in terms of usage of space resource? Did one algorithm use more/less space (memory)?<br />
+-> The faster code didn't use recursion which if not always, tends to use more space resource (memory) because each function call creates a new stack frame which stores the information of function's local variables, input parameters and return address.
+In contrast, in slow function fibonacci, the function called itself twice in every function call (recursion), hence utlizing more memory.
+
+3. What sort of conclusions can you draw based on your observations?<br />
+-> Some of the group members in this lab, have very less difference in their execution time, so other than the difference in approach in solving the problem, it can also be concluded that other factors, such as processor speed, memory available, number of programs already running on the machine, and even the compiler being used can have a affect on the execution speed.
+The syntax of the fastest and slowest code for sum_to_goal was more or less the same, which led me to the above conclusion.
+
+I also observed that, recursion is not the best choice if function is being designed to call itself a lot of times, because that utilizes a lot of memory and makes the function run slow.
