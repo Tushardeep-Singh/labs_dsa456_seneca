@@ -17,13 +17,13 @@ Analyze the following function with respect to number
 
 ```python
 def function1(number):
-	total=0;
+	total=0; # 1
 
-	for i in range(0,number):
-		x = (i+1)
-		total+=(x*x)
+	for i in range(0,number): # n + 1
+		x = (i+1) # 2n
+		total+=(x*x) # 2n
 
-	return total
+	return total # 1
 ```
 ```diff
 + explanation of count:
@@ -109,7 +109,7 @@ Analyze the following function with respect to number
 
 ```python
 def function2(number):
-	return  ((number)*(number+1)*(2*number + 1))/6
+	return  ((number)*(number+1)*(2*number + 1))/6 # (1) + (1) + (1) + (1+1) + (1) + (1)
 
 ```
 ```diff
@@ -158,12 +158,12 @@ Analyze the following with respect to the length of the list. Note that the func
 ```python
 
 def function3(list):
-	for i in range (0,len(list)-1):
-		for j in range(0,len(list)-1-i):
-			if(list[j]>list[j+1]):
-				tmp=list[j]
-				list[j]=list[j+1]
-				list[j+1]=tmp
+	for i in range (0,len(list)-1): # (n-1) + 1 + 1
+		for j in range(0,len(list)-1-i): # z + (n-1) + 1 + 1 + (n-1)
+			if(list[j]>list[j+1]): # 2z
+				tmp=list[j] # z
+				list[j]=list[j+1] # 2z
+				list[j+1]=tmp # 2z
 
 ```
 ```diff
