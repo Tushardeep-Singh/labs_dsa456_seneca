@@ -1,5 +1,4 @@
 # Date of completion : 18th Febuary'2023
-# Authors :
 # Author : Tushardeep Singh 160427217
 from maze import Maze
 
